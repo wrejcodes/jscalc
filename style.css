@@ -1,4 +1,13 @@
 .text-center {
 	text-align: center;
 }
+.calculator {
+	background-color: #f0f0f0;
+	padding-top: 5px;
+	padding-bottom:  5px;
+}
+.screen {
+	text-align: right;
+	background-color: #fefefe;
 
+}
