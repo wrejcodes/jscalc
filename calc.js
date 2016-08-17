@@ -26,15 +26,24 @@ var add = function(){
 		var lastNumber = parseFloat(calculator.previousValue);
 		var current = parseFloat(screenText.innerHTML);
 		screenText.innerHTML = current + lastNumber;
-		calculator.previousValue = screenText.innerHTML;
 	}
-	if(calculator.operation == null){
-		calculator.operation = operationEnum.ADD;
-		calculator.previousValue = screenText.innerHTML;
-		calculator.operationQueued = true;
-		screenText.innerHTML = 0;
-	}
+	calculator.previousValue = screenText.innerHTML;
+	calculator.operation = operationEnum.ADD;
+	calculator.operationQueued = true;
 	calculator.operationTouchedLast = true;
+};
+
+var subtract = function(){
+	if(calculator.operationQueued == true){
+		var lastNumber = parseFloat(calculator.previousValue);
+		var current = parseFloat(screenText.innerHTML);
+		screenText.innerHTML = lastNumber - current;
+	}
+	calculator.operation = operationEnum.SUBTRACT;
+	calculator.previousValue = screenText.innerHTML;
+	calculator.operationQueued = true;
+	calculator.operationTouchedLast = true;
+
 };
 
 var update = function(){
@@ -60,5 +69,5 @@ for(var i = 0; i < calcButtons.length; i++){
 addButton.addEventListener("click",add,false);
 subtractButton.addEventListener("click",subtract,false);
 multiplyButton.addEventListener("click",multiply,false);
-//divideButton.addEventListener("click",divide,false);
+divideButton.addEventListener("click",divide,false);
 
