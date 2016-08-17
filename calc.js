@@ -4,6 +4,7 @@ var addButton = document.getElementById('add');
 var subtractButton = document.getElementById('subtract');
 var multiplyButton = document.getElementById('multiply');
 var divideButton = document.getElementById('divide');
+var equalButton = document.getElementById('equal');
 
 var operationEnum = {
 	ADD : 0,
@@ -46,6 +47,30 @@ var subtract = function(){
 
 };
 
+var multiply = function(){
+	if(calculator.operationQueued == true){
+		var lastNumber = parseFloat(calculator.previousValue);
+		var current = parseFloat(screenText.innerHTML);
+		screenText.innerHTML = lastNumber * current;
+	}
+	calculator.operation = operationEnum.MULTIPLY;
+	calculator.previousValue = screenText.innerHTML;
+	calculator.operationQueued = true;
+	calculator.operationTouchedLast = true;
+};
+
+var divide = function(){
+	if(calculator.operationQueued == true){
+		var lastNumber = parseFloat(calculator.previousValue);
+		var current = parseFloat(screenText.innerHTML);
+		screenText.innerHTML = lastNumber / current;
+	}
+	calculator.operation = operationEnum.DIVIDE;
+	calculator.previousValue = screenText.innerHTML;
+	calculator.operationQueued = true;
+	calculator.operationTouchedLast = true;
+};
+
 var update = function(){
 	if(calculator.operationTouchedLast === true){
 		screenText.innerHTML = this.innerHTML;
@@ -58,6 +83,27 @@ var update = function(){
 	}
 
 };
+var reset = function(){
+	calculator.previousValue = 0;
+	calculator.operation = null;
+	calculator.operationQueued = false;
+	calculator.operationTouchedLast = true;
+};
+var equal = function(){
+	switch(calculator.operation){
+		case 0: add();
+				break;
+		case 1: subtract();
+				break;
+		case 2: multiply();
+				break;
+		case 3: divide();
+				break;
+		default: screenText.innerHTML = 0; 
+				break;
+	}
+	reset();
+}
 
 
 // add event listeners 
@@ -70,4 +116,5 @@ addButton.addEventListener("click",add,false);
 subtractButton.addEventListener("click",subtract,false);
 multiplyButton.addEventListener("click",multiply,false);
 divideButton.addEventListener("click",divide,false);
+equalButton.addEventListener("click",equal,false);
 
