@@ -5,6 +5,9 @@ var subtractButton = document.getElementById('subtract');
 var multiplyButton = document.getElementById('multiply');
 var divideButton = document.getElementById('divide');
 var equalButton = document.getElementById('equal');
+var clearAllButton = document.getElementById('clearAll');
+var clearButton = document.getElementById('clear');
+var moduloButton = document.getElementById('modulo');
 
 var operationEnum = {
 	ADD : 0,
@@ -83,11 +86,20 @@ var update = function(){
 	}
 
 };
+
 var reset = function(){
 	calculator.previousValue = 0;
 	calculator.operation = null;
 	calculator.operationQueued = false;
 	calculator.operationTouchedLast = true;
+};
+
+var clear = function(){
+	screenText.innerHTML = 0;
+};
+var clearAll = function(){
+	reset();
+	screenText.innerHTML = 0;		
 };
 var equal = function(){
 	switch(calculator.operation){
@@ -117,4 +129,6 @@ subtractButton.addEventListener("click",subtract,false);
 multiplyButton.addEventListener("click",multiply,false);
 divideButton.addEventListener("click",divide,false);
 equalButton.addEventListener("click",equal,false);
-
+clearAllButton.addEventListener("click",clearAll,false);
+clearButton.addEventListener("click",clear,false);
+moduloButton.addEventListener("click",modulo,false);
