@@ -18,60 +18,32 @@ var operationEnum = {
 
 var calculator = {
 	previousValue : 0,
-	operation : null,
-	operationQueued: false, 
+	operation : null, 
 	operationTouchedLast: false
 };
 
 // functions for handling button presses
 
 var add = function(){
-	if(calculator.operationQueued == true){
-		var lastNumber = parseFloat(calculator.previousValue);
-		var current = parseFloat(screenText.innerHTML);
-		screenText.innerHTML = current + lastNumber;
-	}
-	calculator.previousValue = screenText.innerHTML;
+	calculate();
 	calculator.operation = operationEnum.ADD;
-	calculator.operationQueued = true;
-	calculator.operationTouchedLast = true;
 };
 
 var subtract = function(){
-	if(calculator.operationQueued == true){
-		var lastNumber = parseFloat(calculator.previousValue);
-		var current = parseFloat(screenText.innerHTML);
-		screenText.innerHTML = lastNumber - current;
-	}
+	calculate();
 	calculator.operation = operationEnum.SUBTRACT;
-	calculator.previousValue = screenText.innerHTML;
-	calculator.operationQueued = true;
-	calculator.operationTouchedLast = true;
 
 };
 
 var multiply = function(){
-	if(calculator.operationQueued == true){
-		var lastNumber = parseFloat(calculator.previousValue);
-		var current = parseFloat(screenText.innerHTML);
-		screenText.innerHTML = lastNumber * current;
-	}
+	calculate();
 	calculator.operation = operationEnum.MULTIPLY;
-	calculator.previousValue = screenText.innerHTML;
-	calculator.operationQueued = true;
-	calculator.operationTouchedLast = true;
+	
 };
 
 var divide = function(){
-	if(calculator.operationQueued == true){
-		var lastNumber = parseFloat(calculator.previousValue);
-		var current = parseFloat(screenText.innerHTML);
-		screenText.innerHTML = lastNumber / current;
-	}
+	calculate();
 	calculator.operation = operationEnum.DIVIDE;
-	calculator.previousValue = screenText.innerHTML;
-	calculator.operationQueued = true;
-	calculator.operationTouchedLast = true;
 };
 
 var update = function(){
@@ -90,7 +62,6 @@ var update = function(){
 var reset = function(){
 	calculator.previousValue = 0;
 	calculator.operation = null;
-	calculator.operationQueued = false;
 	calculator.operationTouchedLast = true;
 };
 
@@ -101,21 +72,32 @@ var clearAll = function(){
 	reset();
 	screenText.innerHTML = 0;		
 };
-var equal = function(){
+var calculate = function(){
+	var lastNumber = parseFloat(calculator.previousValue);
+	var current = parseFloat(screenText.innerHTML);
 	switch(calculator.operation){
-		case 0: add();
+		case 0: screenText.innerHTML = lastNumber + current;
 				break;
-		case 1: subtract();
+		case 1: screenText.innerHTML = lastNumber - current;
 				break;
-		case 2: multiply();
+		case 2: screenText.innerHTML = lastNumber * current;
 				break;
-		case 3: divide();
+		case 3: screenText.innerHTML = lastNumber / current;
 				break;
-		default: screenText.innerHTML = 0; 
+		default:  
 				break;
 	}
+	calculator.previousValue = screenText.innerHTML;
+	calculator.operationTouchedLast = true;
+
+}
+
+var equal = function(){
+	calculate();
 	reset();
 }
+
+
 
 
 // add event listeners 
