@@ -47,6 +47,11 @@ var divide = function(){
 };
 
 var update = function(){
+	if(this.innerHTML == '.'){
+		if(isDecimal(screenText.innerHTML)){
+			return;
+		}
+	}
 	if(calculator.operationTouchedLast === true){
 		screenText.innerHTML = this.innerHTML;
 		calculator.operationTouchedLast = false;
@@ -93,11 +98,21 @@ var calculate = function(){
 }
 
 var equal = function(){
+	if(screenText.innerHTML == "8008135"){
+		window.open("https://www.charitynavigator.org/index.cfm?keyword_list=breast+cancer&Submit2=Search&bay=search.results");
+	}
 	calculate();
 	reset();
-}
+};
 
-
+var isDecimal = function(screenText){
+	for(var i = 0; i < screenText.length; i++){
+		if (screenText[i] == '.'){
+			return true;
+		}
+	}
+	return false;
+};
 
 
 // add event listeners 
