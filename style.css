@@ -1,6 +1,7 @@
 body {
   background-color: #2980b9;
-  color: #2c3e50; }
+  color: #2c3e50;
+  padding-bottom: 5%; }
   body a {
     color: #000055; }
 
@@ -21,6 +22,7 @@ body {
   -moz-box-shadow: 2px 4px 16px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 4px 16px 0px rgba(0, 0, 0, 0.75); }
   .calculator h4 {
+    font-size: 1em;
     font-family: "Georgia", "Cambria", "Times New Roman", "Times", serif;
     color: #ecf0f1;
     background: -webkit-linear-gradient(#eee, #555);
@@ -47,6 +49,9 @@ body {
   .calc-btn:hover {
     background-color: #bdc3c7;
     border-color: #95a5a6; }
+  .calc-btn:active {
+    background-color: #bdc3c7 !important;
+    border-color: #95a5a6 !important; }
 
 .oper-btn {
   background-color: #bdc3c7;
@@ -54,6 +59,9 @@ body {
   .oper-btn:hover {
     background-color: #95a5a6;
     border-color: #7f8c8d; }
+  .oper-btn:active {
+    background-color: #95a5a6 !important;
+    border-color: #7f8c8d !important; }
 
 .clear {
   background-color: #e74c3c;
@@ -61,6 +69,9 @@ body {
   .clear:hover {
     background-color: #c0392b;
     border-color: #9B2114; }
+  .clear:active {
+    background-color: #c0392b !important;
+    border-color: #9B2114 !important; }
 
 .last-btn-row {
   margin-bottom: 10%; }

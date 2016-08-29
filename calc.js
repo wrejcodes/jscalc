@@ -124,7 +124,7 @@ var equal = function(){
 	calculate();
 	reset();
 };
-
+ 
 // check to see if the current number is a decimal
 var isDecimal = function(screenText){
 	for(var i = 0; i < screenText.length; i++){
